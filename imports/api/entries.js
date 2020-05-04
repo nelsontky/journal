@@ -4,6 +4,14 @@ import { ValidatedMethod } from "meteor/mdg:validated-method";
 
 export const Entries = new Mongo.Collection("entries");
 
+Entries.schema = new SimpleSchema({
+  title: { type: String },
+  writtenBy: { type: String },
+  content: { type: String },
+});
+
+Entries.attachSchema(Entries.schema);
+
 if (Meteor.isServer) {
   // This code only runs on the server
   Meteor.publish("entries", () => Entries.find());
