@@ -12,6 +12,12 @@ Entries.schema = new SimpleSchema({
 
 Entries.attachSchema(Entries.schema);
 
+Entries.deny({
+  insert() { return true; },
+  update() { return true; },
+  remove() { return true; },
+});
+
 if (Meteor.isServer) {
   // This code only runs on the server
   Meteor.publish("entries", () => Entries.find());
