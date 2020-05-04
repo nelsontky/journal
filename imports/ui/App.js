@@ -54,6 +54,8 @@ class AppContainer extends React.Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe("entries");
+  
   return {
     entries: Entries.find({}).fetch(),
   };

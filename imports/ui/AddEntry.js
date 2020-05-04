@@ -1,5 +1,5 @@
 import React from "react";
-import { Entries } from "../api/entries.js";
+import { insert } from "../api/entries";
 
 export default class AddEntry extends React.Component {
   constructor(props) {
@@ -7,7 +7,6 @@ export default class AddEntry extends React.Component {
     this.state = {
       title: "",
       writtenBy: "",
-      date: null,
       content: "",
     };
   }
@@ -23,17 +22,15 @@ export default class AddEntry extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    Entries.insert({
+    insert.call({
       title: this.state.title,
       writtenBy: this.state.writtenBy,
-      date: new Date(),
       content: this.state.content,
     });
 
     this.setState({
       title: "",
       writtenBy: "",
-      date: null,
       content: "",
     });
   };
