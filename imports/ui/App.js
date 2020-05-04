@@ -17,10 +17,13 @@ class App extends React.Component {
   renderEntry = (routerProps) => {
     const indexOfEntry = this.props.entries
       .map((entry) => entry._id)
-      .indexOf(this.props.id);
-    return (
-      <Entry entries={this.props.entries} id={routerProps.match.params.id} />
-    );
+      .indexOf(routerProps.match.params.id);
+
+    if (indexOfEntry == -1) {
+      return <p>Not found</p>;
+    } else {
+      return <Entry entry={this.props.entries[indexOfEntry]} />;
+    }
   };
 
   render() {
