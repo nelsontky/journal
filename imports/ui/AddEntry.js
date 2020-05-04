@@ -46,7 +46,10 @@ export default class AddEntry extends React.Component {
         </div>
         <hr />
 
-        <div className="jumbotron" style={{ margin: "0 500px" }}>
+        <div
+          className="jumbotron"
+          style={{ maxWidth: "500px", textAlign: "center", margin: "0 auto" }}
+        >
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label>Title:</label>
@@ -74,7 +77,7 @@ export default class AddEntry extends React.Component {
 
             <div className="form-group">
               <label>Content:</label>
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 placeholder="Enter your content here"
